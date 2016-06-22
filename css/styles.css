@@ -1,0 +1,124 @@
+*, *::after, *:before {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+	line-height: 1.75;
+}
+
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0 10px 1em 10px;
+}
+
+video {
+	width: 100%;
+}
+
+.captions {
+	margin-top: 1em;
+}
+
+#video-container {
+	position: relative;
+	overflow: hidden;
+}
+
+#video-controls {
+	display: none;
+	transition: all 0.3s ease-in;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.3);
+	color: #fff;
+	width: 100%;
+	font-size: 1em;
+	height: 33px;
+}
+
+#video-container:hover #video-controls {
+	opacity: .9;
+	transform: translateY(-42px);
+}
+
+#progress-bar,
+#buffer-bar {
+	transition: all 0.3s ease-in;
+	position: absolute;
+	display:block;
+	width:100%;
+	bottom: 9px;
+}
+
+#progress-bar {
+	z-index: 2;
+}
+
+#video-container:hover #progress-bar,
+#video-container:hover #buffer-bar {
+	transform: translateY(-33px);
+}
+
+#volume-bar {
+	vertical-align: middle;
+}
+
+progress[value] {
+	cursor: hand;
+	cursor: pointer;
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	height: 10px;
+
+	/* Get rid of default border in Firefox. */
+	border: none;
+
+}
+
+/* the container */
+progress[value]::-webkit-progress-bar {
+	border-radius: none;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* the bar */
+progress[value]::-webkit-progress-value {
+	background-color: orange;
+}
+button {
+	background: transparent;
+	border: none;
+	display: inline;
+	color: white;
+}
+
+button img {
+	vertical-align: middle;
+	width: 0.9em;
+}
+
+button:focus {
+	outline: 0;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    border-radius: none;
+    height: 3px;
+    border: 1px solid #bdc3c7;
+}
+
+#left-controls {
+	float: left;
+	vertical-align: middle;
+}
+
+#right-controls {
+	float: right;
+
+	vertical-align: middle;
+}
