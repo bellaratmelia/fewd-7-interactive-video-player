@@ -3,7 +3,7 @@
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1em;
 	line-height: 1.75;
 }
@@ -16,6 +16,10 @@ body {
 
 video {
 	width: 100%;
+}
+
+video::cue {
+	font-size: 0.7em;
 }
 
 .captions {
@@ -65,6 +69,11 @@ video {
 	vertical-align: middle;
 }
 
+.highlight {
+	color: white;
+	background-color: darkorange;
+}
+
 progress[value] {
 	cursor: hand;
 	cursor: pointer;
@@ -94,6 +103,16 @@ button {
 	border: none;
 	display: inline;
 	color: white;
+}
+
+#transcript span {
+	cursor: pointer;
+	transition: all 0.2s ease-in;
+}
+
+#transcript span:hover {
+	color: green;
+	/*text-decoration: underline;*/
 }
 
 button img {
