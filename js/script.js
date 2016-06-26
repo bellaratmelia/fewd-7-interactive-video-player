@@ -18,12 +18,14 @@ if (supports_video) {
 	// grab all them control buttons
 	var play_button = document.getElementById('play-pause');
 	var progress_bar = document.getElementById('progress-bar');
+	var buffer_bar = document.getElementById('buffer-bar');
 	var mute_button = document.getElementById('mute');
 	var volume_bar = document.getElementById('volume-bar');
 	var fullscreen_button = document.getElementById('full-screen');
 	var current_time = document.getElementById('current-time');
 	var duration = document.getElementById('duration');
 	var caption_button = document.getElementById('closed-caption');
+	var playback_button = document.getElementById('playback-speed');
 
 	// transcript text area
 	var transcript_text = document.getElementById('transcript');
@@ -171,8 +173,12 @@ if (supports_video) {
 		// Calculate the slider value
 		var value = (100 / video.duration) * video.currentTime;
 
-		// Update the slider value
+		// calculate the buffer value;
+		var buffer_value = (100 / video.duration) * video.buffered.end(0);
+
+		// Update the slider and buffer value
 		progress_bar.value = value;
+		buffer_bar.value = buffer_value;
 
 		// update current-time value;
 		current_time.innerHTML = format_time(video.currentTime);
@@ -180,14 +186,11 @@ if (supports_video) {
 		// highlight the appropriate transcript span
 		for (var i = 0; i < transcript_array.length; i++) {
 
+			// remove .highlight from all span elements first, and then
+			document.getElementById(transcript_array[i].start).classList.remove('highlight');
+
 			// find the span element with the correct id
 			if (video.currentTime >= transcript_array[i].start && video.currentTime <= transcript_array[i].fin) {
-				
-				// remove .highlight from all span elements first, and then
-				var the_spans = transcript_area.getElementsByTagName('span');
-				for (var s = 0; s < the_spans.length; s++) {
-					the_spans[s].classList.remove('highlight');
-	            }
 
 				// append .highlight to the correct span
 				document.getElementById(transcript_array[i].start).classList.add('highlight');
@@ -195,9 +198,6 @@ if (supports_video) {
 			}
 		}
 	});
-
-	var the_spans = transcript_area.getElementsByTagName('span');
-	console.log(the_spans);
 
 	// Update video playback when progress bar is clicked anywhere
 	progress_bar.addEventListener('click', function(e) {
@@ -235,6 +235,18 @@ if (supports_video) {
             }    
         });
 
+	// Playback Speed button click event 
+	playback_button.addEventListener('click', function() {
+		if (playback_button.innerText == 'Normal') {
+			video.playbackRate = 1.5;
+			video.play();
+			playback_button.innerText = '1.5x';
+		} else if (playback_button.innerText == '1.5x') {
+			video.playbackRate = 1.0;
+			video.play();
+			playback_button.innerText = 'Normal';
+		}
+	});
 	
 		
 }
