@@ -2,11 +2,8 @@ var supports_video = !!document.createElement('video').canPlayType;
 if (supports_video) {
 
 	// setup custom controls
-	var video_container = document.getElementById('video-container');
 	var video = document.getElementById('video');
 	var video_controls = document.getElementById('video-controls');
-	var left_video_controls = document.getElementById('left-controls');
-	var right_video_controls = document.getElementById('right-controls');
 	var transcript_area = document.getElementById('transcript');
 
 	// hide default controls
@@ -27,17 +24,11 @@ if (supports_video) {
 	var caption_button = document.getElementById('closed-caption');
 	var playback_button = document.getElementById('playback-speed');
 
-	// transcript text area
-	var transcript_text = document.getElementById('transcript');
-
 	// some utilities vars
 	var play_state = '<img src="icons/play-icon.png" alt="play video" />';
 	var pause_state = '<img src="icons/pause-icon.png" alt="pause video" />';
 	var mute_state = '<img src="icons/volume-off-icon.png" alt="mute video" />';
 	var unmute_state = '<img src="icons/volume-on-icon.png" alt="unmute video" />';
-
-	// placeholder for transcript object;
-	var transcript_obj;
 
 	// Array of object for transcript text with start and finish
 	var transcript_array = [
@@ -69,7 +60,7 @@ if (supports_video) {
 
 	// Utility function to format time nicely
 	function format_time(seconds) {
-	    minutes = Math.floor(seconds / 60);
+	    var minutes = Math.floor(seconds / 60);
 	    minutes = (minutes >= 10) ? minutes : "0" + minutes;
 	    seconds = Math.floor(seconds % 60);
 	    seconds = (seconds >= 10) ? seconds : "0" + seconds;

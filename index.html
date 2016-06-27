@@ -15,22 +15,22 @@
 			<video id="video" controls preload="metadata">
 				<source src="video/video.mp4" type="video/mp4" />
 				<source src="video/video.ogg" type="video/off" />
-				<track label="English" kind="subtitles" srclang="en" src="captions.vtt" crossorigin="anonymous" default />
+				<track label="English" kind="subtitles" srclang="en" src="captions.vtt" default />
 			</video>
 			<!-- <input type="range" min="0" max="100" id="progress-bar" value="0" /> -->
-			<progress id="progress-bar" value="0" min="0" max="100"></progress>
-			<progress id="buffer-bar" value="0" min="0" max="100"></progress>
+			<progress id="progress-bar" value="0" max="100"></progress>
+			<progress id="buffer-bar" value="0" max="100"></progress>
 			<div id="video-controls" class="controls">
 				<div id="left-controls">
-				    <button type="button" id="play-pause"><img src="icons/play-icon.png" /></button>
+				    <button type="button" id="play-pause"><img src="icons/play-icon.png" alt="play" /></button>
 				    <span id="time-display"><span id="current-time">00:00</span> / <span id="duration">59:59</span></span>
 				</div>
 				<div id="right-controls">
 					<button type="button" id="playback-speed">Normal</button>
 			    	<button type="button" id="closed-caption">CC</button>
-				    <button type="button" id="mute"><img src="icons/volume-on-icon.png" /></button>
-				    <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
-				    <button type="button" id="full-screen"><img src="icons/fullscreen-icon.png" /></button>
+				    <button type="button" id="mute"><img src="icons/volume-on-icon.png" alt="mute/unmute" /></button>
+				    <input type="range" id="volume-bar" max="1" step="0.1" value="1">
+				    <button type="button" id="full-screen"><img src="icons/fullscreen-icon.png" alt="Full Screen"/></button>
 				</div>
 			</div>
 		</div>

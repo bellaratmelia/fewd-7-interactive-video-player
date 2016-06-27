@@ -2,10 +2,36 @@
 	box-sizing: border-box;
 }
 
+/* BODY, CONTAINERS, ELEMENTS */
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1em;
 	line-height: 1.75;
+}
+
+button {
+	background: transparent;
+	border: none;
+	display: inline;
+	color: white;
+}
+
+button img {
+	vertical-align: middle;
+	width: 0.9em;
+}
+
+button:focus,
+input:focus {
+	outline: 0;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0px;
+    height: 3px;
+    border: 1px solid #bdc3c7;
 }
 
 .container {
@@ -14,21 +40,16 @@ body {
 	padding: 0 10px 1em 10px;
 }
 
-video {
-	width: 100%;
-}
-
-video::cue {
-	font-size: 0.7em;
-}
-
-.captions {
-	margin-top: 1em;
-}
 
 #video-container {
 	position: relative;
 	overflow: hidden;
+}
+
+
+ /* VIDEOS AND CONTROLS */
+video {
+	width: 100%;
 }
 
 #video-controls {
@@ -45,6 +66,47 @@ video::cue {
 #video-container:hover #video-controls {
 	opacity: .9;
 	transform: translateY(-42px);
+}
+
+#left-controls {
+	float: left;
+	vertical-align: middle;
+}
+
+#right-controls {
+	float: right;
+	vertical-align: middle;
+}
+
+#volume-bar {
+	vertical-align: middle;
+}
+
+#play-pause {
+	margin-left: 5px;
+}
+
+
+ /* PROGRESS AND BUFFER BARS */
+
+progress[value] {
+	cursor: pointer;
+
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	height: 10px;
+
+	/* Get rid of default border in Firefox. */
+	border: none;
+
+}
+
+/* the container */
+progress[value]::-webkit-progress-bar {
+	border-radius: 0px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+	background-color: rgba(255, 255, 255, 0.15);
 }
 
 #progress-bar,
@@ -65,45 +127,20 @@ video::cue {
 	transform: translateY(-33px);
 }
 
-#volume-bar {
-	vertical-align: middle;
+/* the bar */
+#progress-bar::-webkit-progress-value {
+	background-color: orange;
 }
 
-.highlight {
-	color: white;
-	background-color: darkorange;
-}
-
-progress[value] {
-	cursor: hand;
-	cursor: pointer;
-	/* Reset the default appearance */
-	-webkit-appearance: none;
-	appearance: none;
-	height: 10px;
-
-	/* Get rid of default border in Firefox. */
-	border: none;
-
-}
-
-/* the container */
-progress[value]::-webkit-progress-bar {
-	border-radius: none;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+#buffer-bar::-webkit-progress-value {
 	background-color: rgba(255, 255, 255, 0.25);
 }
 
-/* the bar */
-progress[value]::-webkit-progress-value {
-	background-color: orange;
-}
-button {
-	background: transparent;
-	border: none;
-	display: inline;
-	color: white;
-}
+ /* TRANSCRIPTS AREA */
+
+ #transcript {
+ 	margin-top: 1em;
+ }
 
 #transcript span {
 	cursor: pointer;
@@ -112,32 +149,10 @@ button {
 
 #transcript span:hover {
 	color: green;
-	/*text-decoration: underline;*/
 }
 
-button img {
-	vertical-align: middle;
-	width: 0.9em;
+.highlight {
+	color: white;
+	background-color: darkorange;
 }
 
-button:focus {
-	outline: 0;
-}
-
-input[type=range] {
-    -webkit-appearance: none;
-    border-radius: none;
-    height: 3px;
-    border: 1px solid #bdc3c7;
-}
-
-#left-controls {
-	float: left;
-	vertical-align: middle;
-}
-
-#right-controls {
-	float: right;
-
-	vertical-align: middle;
-}
