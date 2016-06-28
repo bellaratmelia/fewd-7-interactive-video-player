@@ -6,7 +6,7 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1em;
-	line-height: 1.75;
+	line-height: 1.5;
 }
 
 button {
@@ -57,28 +57,37 @@ video {
 	transition: all 0.3s ease-in;
 	position: absolute;
 	background: rgba(0, 0, 0, 0.3);
+	/*background: rgba(0, 0, 0, 1);*/
 	color: #fff;
 	width: 100%;
-	font-size: 1em;
 	height: 33px;
 }
 
 #video-container:hover #video-controls {
 	opacity: .9;
-	transform: translateY(-42px);
+	transform: translateY(-39px);
+}
+
+#left-controls, 
+#right-controls {
+	height: 100%;
 }
 
 #left-controls {
 	float: left;
-	vertical-align: middle;
 }
 
 #right-controls {
 	float: right;
-	vertical-align: middle;
 }
 
-#volume-bar {
+#volume-bar,
+#play-pause,
+#time-display,
+#playback-speed,
+#closed-caption,
+#mute,
+#full-screen {
 	vertical-align: middle;
 }
 
@@ -115,7 +124,7 @@ progress[value]::-webkit-progress-bar {
 	position: absolute;
 	display:block;
 	width:100%;
-	bottom: 9px;
+	bottom: 6px;
 }
 
 #progress-bar {
@@ -156,3 +165,42 @@ progress[value]::-webkit-progress-bar {
 	background-color: darkorange;
 }
 
+
+/* MEDIA QUERIES */
+
+/* Mobile screens */
+@media screen and (max-width: 435px) {
+	/*Smaller size in general*/
+	body {
+		font-size: 0.8em;
+	}
+
+	#video-controls {
+		height: 24px;
+	}
+
+	#video-container:hover #video-controls {
+		opacity: .9;
+		transform: translateY(-30px);
+	}
+
+	#video-container:hover #progress-bar,
+	#video-container:hover #buffer-bar {
+		transform: translateY(-25px);
+	}
+
+	progress[value] {
+		height: 5px;
+	}
+
+	#progress-bar,
+	#buffer-bar {
+		bottom: 5px;
+	}
+
+	#volume-bar,
+	#mute {
+		display: none;
+	}
+
+}
